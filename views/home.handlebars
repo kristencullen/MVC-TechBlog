@@ -1,0 +1,18 @@
+{{!-- Extending the main layout --}}
+{{> header}}
+<main>
+  <h1>Welcome to the Tech Blog</h1>
+  {{#if posts.length}}
+    <section id="posts">
+      {{#each posts}}
+        <article>
+          <h2><a href="/post/{{id}}">{{title}}</a></h2>
+          <p>Posted by {{username}} on {{createdAt}}</p>
+        </article>
+      {{/each}}
+    </section>
+  {{else}}
+    <p>No blog posts yet!</p>
+  {{/if}}
+</main>
+{{> footer}}
