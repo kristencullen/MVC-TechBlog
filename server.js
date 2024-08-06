@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
@@ -11,9 +13,9 @@ const helpers = require('./utils/helpers');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const hbs = exphbs.create({ 
+const hbs = exphbs.create({
   helpers,
-  partialsDir: path.join(__dirname, 'views/partials') // Register partials directory
+  partialsDir: path.join(__dirname, 'views/partials')
 });
 
 const sess = {
@@ -38,5 +40,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+  app.listen(PORT, () => console.log('Now listening on port', 'PORT'));
 });
